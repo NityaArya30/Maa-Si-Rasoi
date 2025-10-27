@@ -1,0 +1,130 @@
+/* ===== Table wrapper ===== */
+.list-table {
+    margin-top: 16px;
+}
+
+/* ===== Row / Grid ===== */
+.list-table-format {
+    display: grid;
+    grid-template-columns: 80px 1.6fr 1.1fr 0.9fr 0.8fr 72px;
+    /* img, name, category, price, rating, action */
+    align-items: center;
+    column-gap: 16px;
+    padding: 12px 16px;
+    background: #15162a;
+    color: #e8e8f0;
+    border-radius: 14px;
+    margin: 10px 0;
+}
+
+/* zebra */
+.list-table-format:nth-child(even):not(.title) {
+    background: #1b1d31;
+}
+
+/* cells */
+.list-table-format>* {
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 6px 8px;
+    white-space: nowrap;
+    /* keep headers and values on one line */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* truncate long text nicely */
+}
+
+.list-table-format>*:last-child {
+    border-right: none;
+}
+
+/* ===== Header ===== */
+.list-table-format.title {
+    background: #4f46e5;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: .02em;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin-top: 0;
+}
+
+/* ===== Image ===== */
+.list-table-format img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ===== Action (Trash) ===== */
+.delete-icon {
+    justify-self: end;
+    /* align to the far right of the last column */
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-grid;
+    place-items: center;
+    background: #ef4444;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+}
+
+.delete-icon:hover {
+    background: #dc2626;
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, .35);
+}
+
+.delete-icon:active {
+    transform: scale(.96);
+}
+
+/* ===== Responsive ===== */
+/* medium: hide CATEGORY to free space */
+@media (max-width: 1000px) {
+    .list-table-format {
+        grid-template-columns: 70px 1.7fr 1fr 0.9fr 62px;
+        /* img, name, price, rating, action */
+    }
+
+    .list-table-format> :nth-child(3) {
+        display: none;
+    }
+
+    /* hide category (3rd cell) */
+}
+
+/* small: hide CATEGORY & PRICE, keep img + name + rating + action */
+@media (max-width: 720px) {
+    .list-table-format.title {
+        display: none;
+    }
+
+    /* card-style rows on mobile */
+    .list-table-format {
+        grid-template-columns: 60px 1fr .8fr 56px;
+        /* img, name, rating, action */
+        padding: 10px 12px;
+    }
+
+    .list-table-format> :nth-child(3),
+    .list-table-format> :nth-child(4) {
+        display: none;
+    }
+
+    /* hide category & price */
+    .list-table-format img {
+        width: 56px;
+        height: 56px;
+    }
+
+    .delete-icon {
+        width: 32px;
+        height: 32px;
+    }
+}
