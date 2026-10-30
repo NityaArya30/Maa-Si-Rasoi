@@ -146,9 +146,6 @@ Review management and order-status routes for proper authorization before exposi
 
 ![Maa Si Rasoi homepage food banner](frontend/public/a_clean_warm_modern_food_ordering_web_app_ui_moc.png)
 
-*Homepage banner image currently included in the project assets.*
-
-> These are existing images from the repository, so they render directly on GitHub. They are project assets rather than screenshots captured from a running app. Add real page screenshots here once the application is running.
 
 ## Contributing
 
