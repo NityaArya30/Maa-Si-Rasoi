@@ -12,7 +12,6 @@ The intended web experience uses the existing Maa Si Rasoi flow and highlights e
 
 Food cards should clearly identify the kitchen that prepared each item. The same kitchen name should also appear beside each item in the cart and order summary, so customers know which Rasoi each dish belongs to.
 
-> **Design preview note:** The latest visual concept is a design reference, not a screenshot of the running application. It should be added as `screenshots/maa-si-rasoi-design.png` once the image is uploaded to the repository. Real application screenshots should be captured after the frontend and backend are running.
 
 ## Contents
 
@@ -148,30 +147,6 @@ Review management and order-status routes for proper authorization before exposi
 
 ## Screenshots
 
-When the application is running, capture and add real screenshots in the `screenshots/` folder:
-
-- `screenshots/home.png` — homepage and kitchen cards.
-- `screenshots/menu.png` — food menu with the kitchen name visible on each item.
-- `screenshots/cart.png` — cart items with their corresponding Rasoi names.
-- `screenshots/checkout.png` — delivery details and payment options.
-- `screenshots/orders.png` — order history and status.
-
-## Security Notes
-
-- Do not commit `.env` files, MongoDB credentials, JWT secrets, or Stripe secret keys.
-- Replace any exposed database connection string and rotate credentials if a real secret was committed.
-- Restrict CORS to trusted frontend origins for production.
-- Protect administrative food/kitchen management and order-status endpoints with authorization.
-- Validate request payloads and uploaded files on the server.
-- Use HTTPS and Stripe's test mode while developing payment flows.
-
-## Future Improvements
-
-- Add a committed `.env.example` for each app with variable names only.
-- Add automated tests for authentication, cart totals, checkout, and order verification.
-- Add role-based authorization for administrative routes.
-- Improve loading, empty, and error states across pages.
-- Add deployment instructions and CI checks.
 
 ## Contributing
 
@@ -180,6 +155,3 @@ When the application is running, capture and add real screenshots in the `screen
 3. Commit your changes with a clear message.
 4. Open a pull request describing the change.
 
-## License
-
-No license file was detected. Add a `LICENSE` file if you want to specify how others may use, modify, and distribute the project.
