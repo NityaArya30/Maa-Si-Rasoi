@@ -2,7 +2,6 @@
 
 A full-stack food ordering platform built to help users explore food and kitchens, add items to a cart, place orders, and review their order history.
 
-> **Project status:** Portfolio / learning project. Configure your own MongoDB database, payment keys, and API URLs before running it.
 
 ## Contents
 
