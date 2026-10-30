@@ -127,11 +127,6 @@ npm run dev
 
 Vite prints the local development URL in the terminal (usually `http://localhost:5173`).
 
-## Environment Configuration
-
-Keep secrets out of source control. The current database connection is defined in `backend/config/db.js`; configure it to use a private environment variable such as `MONGODB_URI`. Never commit real database credentials, JWT secrets, or Stripe keys.
-
-The frontend API base URL is configured in `frontend/src/assets/assets.js`. For local development, it should point to your backend, for example `http://localhost:4000`.
 
 ## Available API Routes
 
@@ -149,15 +144,10 @@ Review management and order-status routes for proper authorization before exposi
 
 ### Maa Si Rasoi — homepage banner
 
-![Maa Si Rasoi homepage food banner](frontend/src/assets/header_img.png)
+![Maa Si Rasoi homepage food banner](<img width="1312" height="1199" alt="a_clean_warm_modern_food_ordering_web_app_ui_moc" src="https://github.com/user-attachments/assets/fe2a5ec9-3dc7-4ada-8ee2-70b0f583a3e8" />
+)
 
 *Homepage banner image currently included in the project assets.*
-
-### Home kitchen photos
-
-| Cook 1 | Cook 2 |
-|---|---|
-| ![Cook 1](frontend/src/assets/Cook1.jpg) | ![Cook 2](frontend/src/assets/Cook2.jpg) |
 
 > These are existing images from the repository, so they render directly on GitHub. They are project assets rather than screenshots captured from a running app. Add real page screenshots here once the application is running.
 
