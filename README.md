@@ -147,6 +147,19 @@ Review management and order-status routes for proper authorization before exposi
 
 ## Screenshots
 
+### Maa Si Rasoi — homepage banner
+
+![Maa Si Rasoi homepage food banner](frontend/src/assets/header_img.png)
+
+*Homepage banner image currently included in the project assets.*
+
+### Home kitchen photos
+
+| Cook 1 | Cook 2 |
+|---|---|
+| ![Cook 1](frontend/src/assets/Cook1.jpg) | ![Cook 2](frontend/src/assets/Cook2.jpg) |
+
+> These are existing images from the repository, so they render directly on GitHub. They are project assets rather than screenshots captured from a running app. Add real page screenshots here once the application is running.
 
 ## Contributing
 
