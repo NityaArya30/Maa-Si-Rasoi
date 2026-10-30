@@ -2,11 +2,13 @@
 
 A full-stack food ordering platform built to help users explore food and kitchens, add items to a cart, place orders, and review their order history.
 
+> **How the web app looks:** Maa Si Rasoi is designed around home-style Indian food and multiple home kitchens, including Anupma's Rasoi, Anna's Rasoi, and Pinky's Rasoi. The intended experience includes kitchen-specific menus, food cards that identify their kitchen, a cart that keeps the kitchen name visible for every item, checkout, and order history.
 
 ## Contents
 
 - [Overview](#overview)
 - [Features](#features)
+- [Web App Design](#web-app-design)
 - [Tech Stack](#tech-stack)
 - [Architecture](#architecture)
 - [Project Structure](#project-structure)
@@ -32,6 +34,27 @@ Maa Si Rasoi is a responsive food-ordering web application with a React frontend
 - **Image uploads:** Backend endpoints support food and kitchen image uploads.
 - **Responsive React UI:** Navigation, login popup, cart, checkout, order history, and footer components.
 - **Feedback:** Toast notifications for user actions.
+
+## Web App Design
+
+The intended web experience follows this flow:
+
+```text
+Home
+ └── Explore Kitchens
+      ├── Anupma's Rasoi
+      ├── Anna's Rasoi
+      └── Pinky's Rasoi
+           └── Kitchen-specific menu
+                └── Add to Cart (kitchen name stays visible)
+                     └── Cart
+                          └── Checkout
+                               └── My Orders
+```
+
+Each food card should clearly display the kitchen it comes from. The same kitchen name should also appear beside the item in the cart and order summary, so customers know which home kitchen is preparing each dish.
+
+**Design reference image:** The latest generated concept is a visual mockup, not a screenshot from a running build. It still needs to be added as `docs/maa-si-rasoi-design.png` before it can be embedded here. The mockup should not be described as a real running-app screenshot.
 
 ## Tech Stack
 
@@ -68,6 +91,7 @@ Maa-Si-Rasoi/
 │   │   ├── Context/          # Shared food, cart, kitchen and auth state
 │   │   └── assets/           # Images, icons and styles
 │   └── package.json
+├── admin/                    # Admin dashboard
 └── backend/
     ├── config/               # Database connection
     ├── controllers/          # Request handlers
@@ -82,8 +106,6 @@ Maa-Si-Rasoi/
 ## Getting Started
 
 ### Prerequisites
-
-Install the following first:
 
 - Node.js (LTS recommended)
 - npm
@@ -102,17 +124,10 @@ cd Maa-Si-Rasoi
 ```bash
 cd backend
 npm install
-```
-
-Configure your MongoDB connection and payment credentials before starting the server. See [Environment Configuration](#environment-configuration).
-
-Start the backend:
-
-```bash
 npm run server
 ```
 
-The API uses port `4000` by default, unless `PORT` is set. Check `http://localhost:4000/` to confirm the API responds.
+Configure your MongoDB connection and payment credentials before starting the server. The API uses port `4000` by default, unless `PORT` is set.
 
 ### 3. Configure the frontend
 
@@ -126,43 +141,13 @@ npm run dev
 
 Vite prints the local development URL in the terminal (usually `http://localhost:5173`).
 
-### 4. Create your first data
-
-The app expects food and kitchen data to be available through the backend. Use the project's food/kitchen management endpoints or your existing database setup to add records before testing the menu.
-
 ## Environment Configuration
 
 Keep secrets out of source control. Use your own local environment variables and never commit real credentials.
 
-The current backend database connection is defined in `backend/config/db.js`; update it to read a MongoDB connection string from `process.env.MONGODB_URI` before deployment. For example:
+The backend database connection is defined in `backend/config/db.js`; configure it to use an environment variable such as `MONGODB_URI`. Store local values in `backend/.env` and never commit the file. Check the source code for the exact variable names expected by the current backend.
 
-```js
-import mongoose from "mongoose";
-
-export const connectDB = async () => {
-  const uri = process.env.MONGODB_URI;
-
-  if (!uri) {
-    throw new Error("MONGODB_URI is not configured");
-  }
-
-  await mongoose.connect(uri);
-  console.log("MongoDB connected");
-};
-```
-
-Create a local `backend/.env` file (do not commit it):
-
-```env
-PORT=4000
-MONGODB_URI=mongodb://127.0.0.1:27017/maa_si_rasoi
-JWT_SECRET=replace_with_a_long_random_secret
-STRIPE_SECRET_KEY=sk_test_replace_me
-```
-
-Use the exact variable names expected by the payment and authentication controllers. Check the source before relying on the sample names above; if the project currently uses different names, align the code and local environment accordingly.
-
-The frontend API base URL is configured in `frontend/src/assets/assets.js`. For local development, it should point to your backend, for example `http://localhost:4000`. Do not put secret keys in frontend code: frontend variables are visible to users.
+The frontend API base URL is configured in `frontend/src/assets/assets.js`. Do not put secret keys in frontend code: frontend variables are visible to users.
 
 ## Available API Routes
 
@@ -176,34 +161,16 @@ The Express server mounts these route groups under `/api`:
 | Cart | `POST /api/cart/get`, `POST /api/cart/add`, `POST /api/cart/remove` | Manage the signed-in user's cart |
 | Orders | `POST /api/order/userorders`, `POST /api/order/place`, `POST /api/order/placecod`, `POST /api/order/verify` | Place, verify, and view orders |
 
-Some management and order-status routes may be intended for administrative use. Review the corresponding controller and add appropriate authorization before exposing them publicly.
+Review management and order-status routes for proper authorization before exposing them publicly.
 
 ## Screenshots
 
-Screenshots should show the **real running application**, not mockups. Capture the following screens after starting the frontend and backend:
-
-| Screen | Suggested file |
-|---|---|
-| Home page with hero and food menu | `screenshots/home.png` |
-| Kitchen/category exploration | `screenshots/kitchens.png` |
-| Food menu and add-to-cart controls | `screenshots/menu.png` |
-| Shopping cart | `screenshots/cart.png` |
-| Checkout page | `screenshots/checkout.png` |
-| Order history | `screenshots/orders.png` |
-| Sign-in / registration popup | `screenshots/login.png` |
-
-Once those images are added to the repository, embed them here using Markdown, for example:
-
-```md
-![Maa Si Rasoi home page](screenshots/home.png)
-![Shopping cart](screenshots/cart.png)
-![Checkout page](screenshots/checkout.png)
-```
+Add screenshots captured from the **real running application** under `screenshots/` and embed them here. The generated design mockup should be labelled as a design reference, not a live application screenshot.
 
 ## Security Notes
 
 - Do not commit `.env` files, MongoDB credentials, JWT secrets, or Stripe secret keys.
-- Replace any placeholder or exposed database connection string and rotate credentials if a real secret was ever committed.
+- Replace any exposed database connection string and rotate credentials if a real secret was committed.
 - Restrict CORS to trusted frontend origins for production.
 - Protect administrative food/kitchen management and order-status endpoints with authorization.
 - Validate request payloads and uploaded files on the server.
