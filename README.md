@@ -2,14 +2,6 @@
 
 A full-stack food ordering platform built to help users explore food and kitchens, add items to a cart, place orders, and review their order history.
 
-## This is how the web app looks
-
-The intended web experience uses the existing Maa Si Rasoi flow and highlights each home kitchen separately:
-
-- **Anupma's Rasoi** — traditional homemade meals.
-- **Anna's Rasoi** — North Indian favourites.
-- **Pinky's Rasoi** — homestyle everyday dishes.
-
 Food cards should clearly identify the kitchen that prepared each item. The same kitchen name should also appear beside each item in the cart and order summary, so customers know which Rasoi each dish belongs to.
 
 
