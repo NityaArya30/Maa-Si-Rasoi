@@ -2,13 +2,22 @@
 
 A full-stack food ordering platform built to help users explore food and kitchens, add items to a cart, place orders, and review their order history.
 
-> **How the web app looks:** Maa Si Rasoi is designed around home-style Indian food and multiple home kitchens, including Anupma's Rasoi, Anna's Rasoi, and Pinky's Rasoi. The intended experience includes kitchen-specific menus, food cards that identify their kitchen, a cart that keeps the kitchen name visible for every item, checkout, and order history.
+## This is how the web app looks
+
+The intended web experience uses the existing Maa Si Rasoi flow and highlights each home kitchen separately:
+
+- **Anupma's Rasoi** — traditional homemade meals.
+- **Anna's Rasoi** — North Indian favourites.
+- **Pinky's Rasoi** — homestyle everyday dishes.
+
+Food cards should clearly identify the kitchen that prepared each item. The same kitchen name should also appear beside each item in the cart and order summary, so customers know which Rasoi each dish belongs to.
+
+> **Design preview note:** The latest visual concept is a design reference, not a screenshot of the running application. It should be added as `screenshots/maa-si-rasoi-design.png` once the image is uploaded to the repository. Real application screenshots should be captured after the frontend and backend are running.
 
 ## Contents
 
 - [Overview](#overview)
 - [Features](#features)
-- [Web App Design](#web-app-design)
 - [Tech Stack](#tech-stack)
 - [Architecture](#architecture)
 - [Project Structure](#project-structure)
@@ -25,7 +34,7 @@ Maa Si Rasoi is a responsive food-ordering web application with a React frontend
 
 ## Features
 
-- **Food discovery:** Browse the available food menu and filter items by kitchen/category.
+- **Food discovery:** Browse food and filter items by kitchen/category.
 - **Kitchen discovery:** Load kitchen listings from the backend.
 - **Cart management:** Add and remove items and calculate the cart total.
 - **Authentication:** Register and sign in; the backend uses password hashing and token-based authentication.
@@ -34,27 +43,6 @@ Maa Si Rasoi is a responsive food-ordering web application with a React frontend
 - **Image uploads:** Backend endpoints support food and kitchen image uploads.
 - **Responsive React UI:** Navigation, login popup, cart, checkout, order history, and footer components.
 - **Feedback:** Toast notifications for user actions.
-
-## Web App Design
-
-The intended web experience follows this flow:
-
-```text
-Home
- └── Explore Kitchens
-      ├── Anupma's Rasoi
-      ├── Anna's Rasoi
-      └── Pinky's Rasoi
-           └── Kitchen-specific menu
-                └── Add to Cart (kitchen name stays visible)
-                     └── Cart
-                          └── Checkout
-                               └── My Orders
-```
-
-Each food card should clearly display the kitchen it comes from. The same kitchen name should also appear beside the item in the cart and order summary, so customers know which home kitchen is preparing each dish.
-
-**Design reference image:** The latest generated concept is a visual mockup, not a screenshot from a running build. It still needs to be added as `docs/maa-si-rasoi-design.png` before it can be embedded here. The mockup should not be described as a real running-app screenshot.
 
 ## Tech Stack
 
@@ -91,7 +79,6 @@ Maa-Si-Rasoi/
 │   │   ├── Context/          # Shared food, cart, kitchen and auth state
 │   │   └── assets/           # Images, icons and styles
 │   └── package.json
-├── admin/                    # Admin dashboard
 └── backend/
     ├── config/               # Database connection
     ├── controllers/          # Request handlers
@@ -127,7 +114,7 @@ npm install
 npm run server
 ```
 
-Configure your MongoDB connection and payment credentials before starting the server. The API uses port `4000` by default, unless `PORT` is set.
+Configure your MongoDB connection and payment credentials before starting the server. The API uses port `4000` by default unless `PORT` is set.
 
 ### 3. Configure the frontend
 
@@ -143,15 +130,11 @@ Vite prints the local development URL in the terminal (usually `http://localhost
 
 ## Environment Configuration
 
-Keep secrets out of source control. Use your own local environment variables and never commit real credentials.
+Keep secrets out of source control. The current database connection is defined in `backend/config/db.js`; configure it to use a private environment variable such as `MONGODB_URI`. Never commit real database credentials, JWT secrets, or Stripe keys.
 
-The backend database connection is defined in `backend/config/db.js`; configure it to use an environment variable such as `MONGODB_URI`. Store local values in `backend/.env` and never commit the file. Check the source code for the exact variable names expected by the current backend.
-
-The frontend API base URL is configured in `frontend/src/assets/assets.js`. Do not put secret keys in frontend code: frontend variables are visible to users.
+The frontend API base URL is configured in `frontend/src/assets/assets.js`. For local development, it should point to your backend, for example `http://localhost:4000`.
 
 ## Available API Routes
-
-The Express server mounts these route groups under `/api`:
 
 | Route group | Example endpoints | Purpose |
 |---|---|---|
@@ -165,7 +148,13 @@ Review management and order-status routes for proper authorization before exposi
 
 ## Screenshots
 
-Add screenshots captured from the **real running application** under `screenshots/` and embed them here. The generated design mockup should be labelled as a design reference, not a live application screenshot.
+When the application is running, capture and add real screenshots in the `screenshots/` folder:
+
+- `screenshots/home.png` — homepage and kitchen cards.
+- `screenshots/menu.png` — food menu with the kitchen name visible on each item.
+- `screenshots/cart.png` — cart items with their corresponding Rasoi names.
+- `screenshots/checkout.png` — delivery details and payment options.
+- `screenshots/orders.png` — order history and status.
 
 ## Security Notes
 
@@ -193,4 +182,4 @@ Add screenshots captured from the **real running application** under `screenshot
 
 ## License
 
-No license file was detected during this README update. Add a `LICENSE` file if you want to specify how others may use, modify, and distribute the project.
+No license file was detected. Add a `LICENSE` file if you want to specify how others may use, modify, and distribute the project.
