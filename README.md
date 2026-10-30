@@ -144,8 +144,7 @@ Review management and order-status routes for proper authorization before exposi
 
 ### Maa Si Rasoi — homepage banner
 
-![Maa Si Rasoi homepage food banner](<img width="1312" height="1199" alt="a_clean_warm_modern_food_ordering_web_app_ui_moc" src="https://github.com/user-attachments/assets/fe2a5ec9-3dc7-4ada-8ee2-70b0f583a3e8" />
-)
+![Maa Si Rasoi homepage food banner](frontend/public/)
 
 *Homepage banner image currently included in the project assets.*
 
