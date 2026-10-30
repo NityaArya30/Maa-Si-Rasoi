@@ -55,6 +55,46 @@ Maa Si Rasoi is a responsive food-ordering web application with a React frontend
 | Uploads | Multer |
 | UI feedback | React Toastify |
 
+
+
+## Skills Demonstrated
+
+### MERN Stack Development
+- **MongoDB:** Document-oriented data storage for food items, kitchens, users, carts, and orders.
+- **Express.js:** REST API design, route handling, request/response workflows, and backend middleware.
+- **React.js:** Component-based UI, reusable components, client-side routing, shared context/state, and responsive pages.
+- **Node.js:** Server-side JavaScript, API integration, and backend application development.
+
+### Backend and API Engineering
+- RESTful API development and integration
+- CRUD operations for food and kitchen management
+- Authentication and authorization workflows
+- JWT-based authentication and password hashing with bcrypt
+- Middleware, controllers, routes, and Mongoose models
+- Input handling, error responses, and API testing workflows
+
+### Database and Data Modeling
+- MongoDB schema design with Mongoose
+- Relationships and data flow across users, food items, kitchens, carts, and orders
+- Persistent cart and order-history workflows
+
+### Payments and File Handling
+- Stripe payment integration and payment verification flow
+- Cash-on-delivery order placement
+- Image uploads with Multer
+
+### Frontend Engineering
+- React, JavaScript, HTML, CSS, and responsive UI development
+- React Router, Axios, and reusable UI components
+- State management using React Context
+- Toast notifications and user feedback
+
+### Engineering Practices
+- Full-stack application architecture
+- Environment-based configuration
+- Git/GitHub version control
+- Local development and deployment preparation
+
 ## Architecture
 
 ```mermaid
